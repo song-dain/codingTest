@@ -6,9 +6,26 @@ public class Week5 {
 
 	public static void main(String[] args) {
 		
-		/* Lv 0. 문자열 반복 출력하기 */
-		
 		Scanner sc = new Scanner(System.in);
+		
+		/* 문자열의 길이가 4 or 6이고, 숫자로만 구성되어 있는지 확인하기 */
+		
+		Boolean answer = true;
+		
+		if(b.length() != 4 && b.length() != 6) {
+			answer = false;
+		}
+		
+		for(int i = 0; i < b.length(); i++) {
+			if(!Character.isDigit(b.charAt(i))) {
+				answer = false;
+			}
+		}
+		
+		System.out.println(answer);
+
+		
+		/* Lv 0. 문자열 반복 출력하기 */
 		
 		System.out.print("반복 문자를 입력하세요. : ");
 		String str = sc.nextLine();
@@ -40,5 +57,6 @@ public class Week5 {
 		System.out.println(result);
 
 	}
+
 
 }
