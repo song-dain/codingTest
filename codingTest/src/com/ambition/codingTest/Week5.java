@@ -12,6 +12,8 @@ public class Week5 {
 		
 		Boolean answer = true;
 		
+		String b = "12345";
+		
 		if(b.length() != 4 && b.length() != 6) {
 			answer = false;
 		}
