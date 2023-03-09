@@ -11,8 +11,41 @@ public class Week7 {
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Scanner sc = new Scanner(System.in);
 		
-		// 백준 1259
+		// 백준 1371 ========================
+		
+		int alph[] = new int[26];
+		
+		while(sc.hasNextLine()) {
+			
+			String str = sc.nextLine();
+			
+			for(int i = 0; i < str.length(); i++) {
+				// 알파벳 범위에 있을 경우
+				if(str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+					alph[str.charAt(i) - 'a']++;
+				}
+			}
+			
+		}
+		
+		int max = 0;
+		for(int i = 0; i < 26; i++) {
+			if(max < alph[i]){
+				max = alph[i];
+			}
+		}
+		
+		for(int i = 0; i < 26; i++) {
+			if(max == alph[i]) {
+				System.out.println((char) (i + 'a'));
+			}
+		}
+		
+		
+		// 백준 1259 ========================
+		
 		
 		
 		while(true) {
@@ -77,8 +110,6 @@ public class Week7 {
 		
 		
 		// 프로그래머스 =======================
-		
-		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("숫자 입력: ");
 		long number = sc.nextLong();
