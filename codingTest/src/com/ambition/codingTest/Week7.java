@@ -15,34 +15,31 @@ public class Week7 {
 		
 		// 백준 1371 ========================
 		
+		String input;
 		int alph[] = new int[26];
 		
-		while(sc.hasNextLine()) {
+		while((input = br.readLine()) != null) {
+			for(int i = 0; i < input.length(); i++) {
+				if(!input.substring(i, i + 1).equals(" ")) {
+					alph[(int)input.substring(i, i + 1).charAt(0) - 97]++;
+				}
+			}
+		
+			int max = Integer.MIN_VALUE;
 			
-			String str = sc.nextLine();
-			
-			for(int i = 0; i < str.length(); i++) {
-				// 알파벳 범위에 있을 경우
-				if(str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
-					alph[str.charAt(i) - 'a']++;
+			for(int i = 0; i < alph.length; i++) {
+				if(max < alph[i]) {
+					max = alph[i];
 				}
 			}
 			
-		}
-		
-		int max = 0;
-		for(int i = 0; i < 26; i++) {
-			if(max < alph[i]){
-				max = alph[i];
+			for(int i = 0; i < alph.length; i++) {
+				if(alph[i] == max) {
+					System.out.print((char)(i + 97));
+				}
 			}
-		}
 		
-		for(int i = 0; i < 26; i++) {
-			if(max == alph[i]) {
-				System.out.println((char) (i + 'a'));
-			}
 		}
-		
 		
 		// 백준 1259 ========================
 		
@@ -139,8 +136,8 @@ public class Week7 {
 		}
 		
 		
+		br.close();
 		sc.close();
-		
 
 	}
 
