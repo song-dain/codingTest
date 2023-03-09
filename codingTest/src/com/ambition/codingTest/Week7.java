@@ -20,19 +20,26 @@ public class Week7 {
 		
 		while((input = br.readLine()) != null) {
 			for(int i = 0; i < input.length(); i++) {
+				// 공백이 아닌 문자만 세어지는 조건
 				if(!input.substring(i, i + 1).equals(" ")) {
+					// i번째 알파벳을 아스키코드(정수형)으로 변환하여 누적함 (97 == 'a')
 					alph[(int)input.substring(i, i + 1).charAt(0) - 97]++;
 				}
 			}
 		
-			int max = Integer.MIN_VALUE;
+			// JAVA 기본 데이터 타입 중 특히 정수형으로 선언하고 
+			// MIN_VALUE 혹은 MAX_VALUE를 붙여주면 그 데이터타입이 표현할 수 있는 
+			// 숫자의 범위 중 가장 작은 숫자(큰 숫자로) 값이 할당됨 => 대소비교를 할 때 안전하고 편리하다
+			int max = Integer.MAX_VALUE;
 			
+			// 최대값을 알아낸다
 			for(int i = 0; i < alph.length; i++) {
 				if(max < alph[i]) {
 					max = alph[i];
 				}
 			}
 			
+			// 최대값을 출력한다
 			for(int i = 0; i < alph.length; i++) {
 				if(alph[i] == max) {
 					System.out.print((char)(i + 97));
