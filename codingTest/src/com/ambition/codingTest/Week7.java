@@ -3,6 +3,11 @@ package com.ambition.codingTest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -13,33 +18,174 @@ public class Week7 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner sc = new Scanner(System.in);
 		
-		// 백준 2386 ========================
 		
-		int ch = ' ';
-		int cnt = 0;
-	
 		
-		while(true) {
+		// 백준 4458 	========================
+		
+		// 줄의 수 입력받기
+		System.out.print("줄의 수 입력 : ");
+		int num9 = Integer.parseInt(br.readLine());
+		
+		for(int i = 0; i <= num9; i++) {
+			String str9 = br.readLine();
 			
-			
-			System.out.print("문자열 입력 : ");
-			String input = br.readLine();
-			
-			if(input.equals("#")) break;
-			
-			// 소문자로 바꿔서 배열에 저장한다
-			String strArr[] = input.toLowerCase().split("");
-			
-			for(int i = 0; i < strArr.length; i++) {
-				if(input.split("")[0].equals(strArr[i]))
-					cnt++;
-			}
-			
-			System.out.println(input.split("")[0] + " " + (cnt - 1));
+			// 첫번째 글자를 잘라 대문자로 만들고, 첫 번째 이후 ~ 끝까지 글자를 잘라 합친다
+			System.out.println((str9.substring(0, 1)).toUpperCase() + str9.substring(1));
 		}
 		
 		
 		
+		// 백준 3046 	========================
+		
+		// R2 구하기, S는 R1과 R2의 평균 값이다
+		
+		System.out.print("R1 입력 : ");
+		int r1 = sc.nextInt();
+		
+		System.out.println("S 입력 : ");
+		int s = sc.nextInt();
+		
+		// 평균에 2를 곱하고 R1을 빼면 R2가 나온다
+		System.out.println(s * 2 - r1);
+		
+		
+		
+		// 백준 2953 ========================
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		// 몇 번째 사람인지, 평가 점수 합계를 map에 저장한다
+		for(int i = 0; i <= 5; i++) {
+			
+			// 다음 턴에서 0으로 초기화
+			int sum = 0;
+			
+			for(int j = 0; j < 4; j++) {
+				sum += sc.nextInt();
+			}
+			
+			map.put(i, sum);
+		}
+		
+		// 키 값만 저장
+		List<Integer> keySetList = new ArrayList<Integer>(map.keySet());
+		
+		// Collections sort 기능을 이용해 내림차순 정렬함 (참고 : https://hianna.tistory.com/569)
+		Collections.sort(keySetList, Collections.reverseOrder());
+		
+		// 가장 첫 번째 키와 값 출력
+		System.out.println(keySetList.get(0) + " " + map.get(keySetList.get(0)));
+		
+		
+		
+		// 백준 2947 ========================
+		
+		int twig[] = new int[5];
+		
+		// 5개의 숫자를 입력받는다
+		System.out.println("다섯 개 숫자 입력 : ");
+		for(int i = 0; i < 5; i++) {
+			twig[i] = sc.nextInt();
+		}
+		
+		// 정렬한다 받은 숫자가 5개이므로 5번 돌린다
+		for(int j = 0; j < 5; j++) {
+			for(int i = 0; i < 4; i++) {
+				
+				// 앞의 자리보다 큰 숫자라면 임시 변수에 담아 자릿수를 교한한다
+				if(twig[i] > twig[i + 1]) {
+					int temp = twig[i];
+					twig[i] = twig[i + 1];
+					twig[i + 1] = temp;
+					
+					// 현재 위치를 출력한다
+					for(int tw : twig) {
+						System.out.print(tw + " ");
+					}
+					
+					System.out.println();
+				}
+			}
+		}
+		
+		
+		
+		// 백준 2857 ========================
+		
+		// 5개의 암호명을 넣을 문자열 배열, 결과를 넣을 문자열, 요원이 있는지 없는지 확인할 불리언 변수 선언
+		String strArr2[] = new String[5];
+		StringBuilder sb2 = new StringBuilder();
+		boolean checked = false;
+		
+		while(true) {
+			
+			System.out.print("요원명 입력 : ");
+			
+			for(int i = 0; i < 5; i++) {
+				
+				strArr2[i] = sc.nextLine();
+				
+				// 요원이 있을 경우 true로 변환하고 몇 번째인지 저장함
+				if(strArr2[i].contains("FBI")) {
+					checked = true;
+					sb2.append(i + 1 + " "); 
+				}
+			}
+			
+			// 요원이 있을 경우와 없을 경우를 나누어 출력
+			if(checked == true) {
+				System.out.println(sb2); break;
+			} else {
+				System.out.println("HE GOT AWAY!"); break;
+			}
+			
+		}
+		
+		
+		
+		// 백준 2438 ========================
+		// 별찍기
+		
+		System.out.print("2438 숫자 입력 : ");
+		int col = sc.nextInt();
+		
+		StringBuilder sb = new StringBuilder();
+		
+		
+		for(int i = 0; i < col; i++) {
+			sb.append("*");
+			System.out.println(sb);
+		}
+		
+		
+		
+		// 백준 2386 ======================== (모르겠다!)
+		
+        while (true) {
+        	
+        	System.out.print("2386 문자열 입력 : ");
+            String inputStr = br.readLine();
+            if (inputStr.equals("#")) {
+                break;
+            }
+            
+            // 문자열을 토큰으로 저장, 첫 번째 문자를 가져옴
+            StringTokenizer st3 = new StringTokenizer(inputStr, " ");
+            char givenLetter = st3.nextToken().charAt(0);
+
+            String str = "";
+
+            while (st3.hasMoreTokens()) {
+                str += st3.nextToken();
+            }
+
+            System.out.println(givenLetter + " " + countCharInStr(givenLetter, str));
+        }
+		
+		
+		
+        // 백준 1834 ========================
+        
 		// 1. N-1은 나머지와 몫이 같은 자연수 개수
 		// 2. 나머지와 몫이 같은 자연수는 배수 관계 3 => (4, 8), 4 => (5, 10, 15)
 		
@@ -120,8 +266,8 @@ public class Week7 {
 		System.out.print("문자열 입력: ");
 		
 		// StringTokenizer로 공백을 통해 분리하여 토큰에 저장 후 토큰 세기
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		System.out.println(st.countTokens());
+		StringTokenizer st0 = new StringTokenizer(br.readLine(), " ");
+		System.out.println(st0.countTokens());
 		
 		
 		// 다른 풀이
@@ -190,5 +336,17 @@ public class Week7 {
 		sc.close();
 
 	}
+	
+    private static int countCharInStr(char givenLetter, String str) {
+        int count = 0;
+        for (char letter : str.toLowerCase().toCharArray()) {
+            if (letter == givenLetter) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }
+
+
