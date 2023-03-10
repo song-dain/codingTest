@@ -13,6 +13,49 @@ public class Week7 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner sc = new Scanner(System.in);
 		
+		// 백준 2386 ========================
+		
+		int ch = ' ';
+		int cnt = 0;
+	
+		
+		while(true) {
+			
+			
+			System.out.print("문자열 입력 : ");
+			String input = br.readLine();
+			
+			if(input.equals("#")) break;
+			
+			// 소문자로 바꿔서 배열에 저장한다
+			String strArr[] = input.toLowerCase().split("");
+			
+			for(int i = 0; i < strArr.length; i++) {
+				if(input.split("")[0].equals(strArr[i]))
+					cnt++;
+			}
+			
+			System.out.println(input.split("")[0] + " " + (cnt - 1));
+		}
+		
+		
+		
+		// 1. N-1은 나머지와 몫이 같은 자연수 개수
+		// 2. 나머지와 몫이 같은 자연수는 배수 관계 3 => (4, 8), 4 => (5, 10, 15)
+		
+		System.out.print("숫자 입력: ");
+		
+		long n = sc.nextLong();
+		long sum = 0;
+		
+		for(long i = 1; i < n; i++) {
+			sum += (n + 1) * i;
+		}
+		
+		System.out.println(sum);
+		
+		
+		
 		// 백준 1371 ========================
 		
 		String input;
@@ -48,9 +91,9 @@ public class Week7 {
 		
 		}
 		
+		
+		
 		// 백준 1259 ========================
-		
-		
 		
 		while(true) {
 			
