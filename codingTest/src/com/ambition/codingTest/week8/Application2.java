@@ -1,7 +1,6 @@
 package com.ambition.codingTest.week8;
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Application2 {
 	
