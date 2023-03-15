@@ -40,6 +40,7 @@ public class Application1 {
 			
 		}
 		
+		sc.close();
 		
 	}
 
