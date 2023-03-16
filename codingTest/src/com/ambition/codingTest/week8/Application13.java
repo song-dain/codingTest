@@ -23,6 +23,8 @@ public class Application13 {
 		int cnt = A/2+B;
 		
 		System.out.println(Math.min(N, cnt));
+		
+		br.close();
 
 	}
 
